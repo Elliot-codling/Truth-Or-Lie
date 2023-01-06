@@ -162,8 +162,11 @@ class window:
         print("FPS: {}".format(fps))
         pygame.time.delay(100)              #stop game for 0.1 seconds
 
-    def define(name, w, h):             #define the window          
-        window = pygame.display.set_mode((w, h))                #create window  
+    def define(name, w, h, flags=0, vsync=0):             #define the window   
+        if vsync == 0:    #create window
+            window = pygame.display.set_mode((w, h), flags)        
+        elif vsync == 1:
+            window = pygame.display.set_mode((w, h), flags, vsync=1)         
         pygame.display.set_caption(name)                        #create name
         return window
 
